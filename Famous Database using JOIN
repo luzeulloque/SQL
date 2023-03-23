@@ -1,0 +1,44 @@
+CREATE TABLE famous ( 
+    id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    fullname TEXT, 
+    age INTEGER);
+    
+INSERT INTO famous ( fullname, age) VALUES ("Emma Stone", "34");
+INSERT INTO famous ( fullname, age) VALUES ( "Jennifer Lawrence", "32");
+INSERT INTO famous ( fullname,age) VALUES ( "Scarlett Johansson", "38"); 
+INSERT INTO famous (fullname, age) VALUES ( "Mila Kunis", "39");
+INSERT INTO famous (fullname,age) VALUES ("Angelina Jolie", "47");
+INSERT INTO famous (fullname, age) VALUES ("Margot Robbie", "32");
+INSERT INTO famous (fullname, age) VALUES ("Octavia Spencer", "52");
+INSERT INTO famous (fullname, age) VALUES ("Bryce Dallas Howard", "42"); 
+INSERT INTO famous (fullname, age) VALUES ("Sandra Bullock", "58");
+INSERT INTO famous (fullname, age) VALUES ("Keanu Reeves", "58");
+INSERT INTO famous ( fullname,age) VALUES ("Tom Cruise", "60");
+INSERT INTO famous (fullname, age) VALUES ("Brad Pitt", "59");
+INSERT INTO famous (fullname, age) VALUES ("Michael Ealy", "49");
+INSERT INTO famous (fullname, age) VALUES ("Leonardo DiCaprio", "48");
+INSERT INTO famous (fullname,age) VALUES ("Sam Worthington", "46");
+
+CREATE TABLE movies (
+    id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    person_id INTEGER,
+    title TEXT);
+    
+INSERT INTO movies (person_id,title) VALUES (1,"The Help");
+INSERT INTO movies (person_id,title) VALUES (2, "The Hunger Games");
+INSERT INTO movies (person_id,title) VALUES (3,"Black Widow");
+INSERT INTO movies (person_id,title) VALUES (4,"Bad Moms");
+INSERT INTO movies (person_id,title) VALUES (5,"Eternals");
+INSERT INTO movies (person_id,title) VALUES (6, "Focus");
+INSERT INTO movies (person_id, title) VALUES (7, "The Shack");
+INSERT INTO movies (person_id,title) VALUES (8, "Jurassic World");
+INSERT INTO movies ( person_id,title) VALUES (9,"Bird Box");
+INSERT INTO movies (person_id,title) VALUES (10, "John Wick");
+INSERT INTO movies (person_id,title) VALUES (11, "Top Gun");
+INSERT INTO movies (person_id, title) VALUES (12, "Bullet Train");
+INSERT INTO movies (person_id,title) VALUES (13, "Fatale");
+INSERT INTO movies (person_id, title) VALUES (14, "Titanic");
+INSERT INTO movies (person_id,title) VALUES (15, "Avatar");
+
+
+SELECT famous.fullname AS "Movie Stars", movies.title AS "Movie Title" FROM famous JOIN movies ON famous.id = movies.person_id;
