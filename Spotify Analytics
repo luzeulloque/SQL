@@ -1,0 +1,66 @@
+# I acquired Spotify data from Kaggle for this project. 
+# I then made a table into which I would insert Spotify data. 
+# Finally, I used SQL to run statistics on the dataset.
+
+#Creating the table: 
+CREATE TABLE BIT_DB.Spotifydata (
+id integer PRIMARY KEY,
+artist_name varchar NOT NULL,
+track_name varchar NOT NULL,
+track_id varchar NOT NULL,
+popularity integer NOT NULL,
+danceability decimal(4,3) NOT NULL,
+energy decimal(4,3) NOT NULL,
+key integer NOT NULL,
+loudness decimal(5,3) NOT NULL,
+mode integer NOT NULL,
+speechiness decimal(5,4) NOT NULL,
+acousticness decimal(6,5) NOT NULL,
+instrumentalness text NOT NULL,
+liveness decimal(5,4) NOT NULL,
+valence decimal(4,3) NOT NULL,
+tempo decimal(6,3) NOT NULL,
+duration_ms integer NOT NULL,
+time_signature integer NOT NULL 
+)
+
+# The Spotify Data.csv was then added to the table. 
+
+# I then used the following SQL to further explore the data.
+
+#Who was the top 10 artist based on popularity?
+SELECT distinct artist_name,popularity
+FROM BIT_DB.Spotifydata
+ORDER BY popularity desc LIMIT 10
+
+#Which is the longest danceability track and who is the artist?
+SELECT distinct artist_name,
+danceability,
+track_name
+FROM BIT_DB.Spotifydata
+ORDER BY danceability desc
+
+#For artist and track, what is the average for speechiness, energy, and instrumentalness?
+SELECT
+artist_name,
+track_name,
+avg(energy),
+avg(speechiness),
+avg(instrumentalness)
+FROM BIT_DB.Spotifydata
+GROUP BY artist_name, track_name
+
+#What are the top 3 songs that have the most accousticiness 
+SELECT track_name,
+acousticness
+FROM BIT_DB.Spotifydata
+ORDER BY acousticness desc
+
+#What the loudest track name?
+SELECT artist_name,
+loudness,
+track_name
+FROM BIT_DB.Spotifydata
+ORDER BY loudness desc LIMIT 1
+
+
